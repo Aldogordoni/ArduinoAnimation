@@ -48,17 +48,23 @@ const static unsigned char kenobi_array[1][458] PROGMEM = {
 void drawAnimation(void) {
   // play images and animatio in our desired sequence order
   static uint8_t pointer = 0 ;
-  static uint8_t yKenobi = 10;
-  static uint8_t changeText = 0;
+  static uint8_t yKenobi = 15;
+  static uint8_t switchIndex = 0;
   
   u8g2.drawXBMP( 40, yKenobi, kenobi_width, kenobi_height, kenobi_array[0]);
   
-  if(changeText<139){
+  if(switchIndex==0){
     u8g2.setFont(u8g2_font_sticker_mel_tr);
-    u8g2.drawStr(45,yKenobi-40,"Hello");
-  } else {
+    u8g2.drawStr(40,yKenobi-50,"There");
+    if(yKenobi == 15){
+      switchIndex++;
+    }    
+  } else if (switchIndex==1){
     u8g2.setFont(u8g2_font_sticker_mel_tr);
-    u8g2.drawStr(40,yKenobi-40,"There");
+    u8g2.drawStr(45,yKenobi-50,"Hello");
+    if(yKenobi == 15){
+      switchIndex--;
+    }
   }
   
   if(pointer<70){
@@ -67,12 +73,9 @@ void drawAnimation(void) {
    yKenobi--;
   }
   pointer++;
-  changeText++;
   
   if(pointer>139){
     pointer = 0;
-  }
-  if(pointer>279){
   }
 }
 
