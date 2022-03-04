@@ -542,8 +542,6 @@ void setup(void) {
   u8g2.begin();
 }
 
-//test
-
 void loop(void) { 
   u8g2.firstPage();
   do {
