@@ -2,6 +2,8 @@
 <h3>Displaying gifs and text using u8g2 library and XBM to animate multiple frames.</h3>
 
 <br>This program was made for the Arudino 0.96" OLED screen. It is possible to use other sizes but the code will need to be adapted to do so.<br><br>
+Here is the wiring for the OLED screen in case anyone needs it:<br>
+![image](https://user-images.githubusercontent.com/72141834/156676674-1703edc1-cb8d-41d7-a66a-e45a1b7f1e24.png)<br><br>
 
 In order to do so we first have to select what gif we want to use.
 In arduino it is not possible to display gifs as they are, therefore we will split the gif in different frames, map each pixel in them to be stored in an array of char and then display the gif in sequence using the u8g2 library.
