@@ -516,54 +516,17 @@ const static unsigned char cat_array[10][576] PROGMEM = {
 
 void drawAnimation(void) {
   // play images and animatio in our desired sequence order
-  static uint8_t pointer = 0 ;
-
-  switch(pointer){
-    case 0: writeI(); u8g2.drawXBMP( 0, 30, cat_width, cat_height, cat_array[0]);break;
-    case 1: writeI();u8g2.drawXBMP( 5, 30, cat_width, cat_height, cat_array[1]);break;
-    case 2: writeI();u8g2.drawXBMP( 10, 30, cat_width, cat_height, cat_array[2]);break;
-    case 3: writeI();u8g2.drawXBMP( 15, 30, cat_width, cat_height, cat_array[3]);break;
-    case 4: writeI();u8g2.drawXBMP( 20, 30, cat_width, cat_height, cat_array[4]);break;
-    case 5: writeI();u8g2.drawXBMP( 25, 30, cat_width, cat_height, cat_array[5]);break;
-    case 6: writeI();u8g2.drawXBMP( 30, 30, cat_width, cat_height, cat_array[6]);break;
-    case 7: writeI();u8g2.drawXBMP( 35, 30, cat_width, cat_height, cat_array[7]);break;
-    case 8: writeI();u8g2.drawXBMP( 40, 30, cat_width, cat_height, cat_array[8]);break;
-    case 9: writeI();u8g2.drawXBMP( 45, 30, cat_width, cat_height, cat_array[9]);break;
-    case 10: writeP();u8g2.drawXBMP(50, 30, cat_width, cat_height, cat_array[0]);break;
-    case 11: writeP();u8g2.drawXBMP( 55, 30, cat_width, cat_height, cat_array[1]);break;
-    case 12: writeP();u8g2.drawXBMP( 60, 30, cat_width, cat_height, cat_array[2]);break;
-    case 13: writeP();u8g2.drawXBMP( 65, 30, cat_width, cat_height, cat_array[3]);break;
-    case 14: writeP();u8g2.drawXBMP( 70, 30, cat_width, cat_height, cat_array[4]);break;
-    case 15: writeP();u8g2.drawXBMP( 75, 30, cat_width, cat_height, cat_array[5]);break;
-    case 16: writeP();u8g2.drawXBMP( 80, 30, cat_width, cat_height, cat_array[6]);break;
-    case 17: writeP();u8g2.drawXBMP( 85, 30, cat_width, cat_height, cat_array[7]);break;
-    case 18: writeP();u8g2.drawXBMP( 90, 30, cat_width, cat_height, cat_array[8]);break;
-    case 19: writeP();u8g2.drawXBMP( 95, 30, cat_width, cat_height, cat_array[9]);break;
-    case 20: writeI();u8g2.drawXBMP( -90, 30, cat_width, cat_height, cat_array[1]);break;
-    case 21: writeI();u8g2.drawXBMP( -85, 30, cat_width, cat_height, cat_array[2]);break;
-    case 22: writeI();u8g2.drawXBMP( -80, 30, cat_width, cat_height, cat_array[3]);break;
-    case 23: writeI();u8g2.drawXBMP( -75, 30, cat_width, cat_height, cat_array[4]);break;
-    case 24: writeI();u8g2.drawXBMP( -70, 30, cat_width, cat_height, cat_array[5]);break;
-    case 25: writeI();u8g2.drawXBMP( -65, 30, cat_width, cat_height, cat_array[6]);break;
-    case 26: writeI();u8g2.drawXBMP( -60, 30, cat_width, cat_height, cat_array[7]);break;
-    case 27: writeI();u8g2.drawXBMP( -55, 30, cat_width, cat_height, cat_array[8]);break;
-    case 28: writeI();u8g2.drawXBMP( -50, 30, cat_width, cat_height, cat_array[9]);break;
-    case 29: writeI();u8g2.drawXBMP( -45, 30, cat_width, cat_height, cat_array[0]);break;
-    case 30: writeP();u8g2.drawXBMP( -40, 30, cat_width, cat_height, cat_array[1]);break;
-    case 31: writeP();u8g2.drawXBMP( -35, 30, cat_width, cat_height, cat_array[2]);break;
-    case 32: writeP();u8g2.drawXBMP( -30, 30, cat_width, cat_height, cat_array[3]);break;
-    case 33: writeP();u8g2.drawXBMP( -25, 30, cat_width, cat_height, cat_array[4]);break;
-    case 34: writeP();u8g2.drawXBMP( -20, 30, cat_width, cat_height, cat_array[5]);break;
-    case 35: writeP();u8g2.drawXBMP( -15, 30, cat_width, cat_height, cat_array[6]);break;
-    case 36: writeP();u8g2.drawXBMP( -10, 30, cat_width, cat_height, cat_array[7]);break;
-    case 37: writeP();u8g2.drawXBMP( -5, 30, cat_width, cat_height, cat_array[8]);break;
-  }
-  pointer++;
+  //static uint8_t pointer = 0 ;
+  static uint8_t arrayPointer = 0;
+  static uint8_t xPos = 0;
+  writeI();
+  u8g2.drawXBMP( xPos, 30, cat_width, cat_height, cat_array[arrayPointer]);
+  arrayPointer++;
+  xPos+=5;
   
-  // number of frames to play before animation loops itself
-    if(pointer>37){
-      pointer = 0;
-    }
+  if(arrayPointer>9){
+    arrayPointer = 0;
+  }
 }
 
 void writeP(void){
