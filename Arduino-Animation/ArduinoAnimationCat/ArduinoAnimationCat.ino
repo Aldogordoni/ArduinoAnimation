@@ -519,10 +519,15 @@ void drawAnimation(void) {
   //static uint8_t pointer = 0 ;
   static uint8_t arrayPointer = 0;
   static uint8_t xPos = 0;
-  writeI();
+  
   u8g2.drawXBMP( xPos, 30, cat_width, cat_height, cat_array[arrayPointer]);
   arrayPointer++;
   xPos+=5;
+  if(0 < xPos && xPos < 140){
+    writeP();
+  } else{
+    writeI();
+  }
   
   if(arrayPointer>9){
     arrayPointer = 0;
@@ -531,11 +536,11 @@ void drawAnimation(void) {
 
 void writeP(void){
   u8g2.setFont(u8g2_font_sticker_mel_tr);
-  u8g2.drawStr(40,25,"There");
+  u8g2.drawStr(27,25,"Pikachu!");
 }
 void writeI(void){
   u8g2.setFont(u8g2_font_sticker_mel_tr);
-  u8g2.drawStr(45,25,"Hello");
+  u8g2.drawStr(5,25,"Let me take a");
 }
 
 void setup(void) {
